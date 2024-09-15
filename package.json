@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "engines": {
-    "node": "14.x"
+    "node": "20.x"
   },
   "scripts": {
     "beautiful": "prettier --single-quote --tab-width 4 --trailing-comma all --write 'src/**/*.{js,json,scss}'",
