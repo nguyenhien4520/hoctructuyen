@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="wrap-login">
+        <div class="login-container">
+            <h2 class="text-center">Đăng nhập</h2>
+            <form action="/signin" method="POST">
+                <div class="form-group">
+                    <label for="username">Tên tài khoản</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Nhập tài khoản"
+                        required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Nhập mật khẩu" value="123456" required >
+                </div>
+                <button type="submit" class="btn btn-success btn-block">Đăng nhập</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

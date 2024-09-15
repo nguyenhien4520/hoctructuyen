@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="mt-4 mb-4">Admin Dashboard</h1>
+        <a href="/logout" class="btn btn-login" style="text-decoration: none;"> Đăng xuất</a>
+    </div>
+
+    <div class="row g-4 mt-4">
+        <!-- Manage Classes -->
+        <div class="col-lg-6 col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-chalkboard fa-2x text-primary mb-3"></i>
+                    <h5 class="card-title">Quản lý lớp học</h5>
+                    <p class="card-text">Tạo, cập nhật và quản lý lớp học</p>
+                    <a href="/admin/classes" class="btn btn-outline-primary">Đến trang quản lý lớp</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Teachers -->
+        <div class="col-lg-6 col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-user-tie fa-2x text-success mb-3"></i>
+                    <h5 class="card-title">Quản lý giáo viên</h5>
+                    <p class="card-text">Xem và quản lý tất cả giáo viên</p>
+                    <a href="/admin/teachers" class="btn btn-outline-success">Đến trang quản lý giáo viên</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row g-4 mt-4">
+        <!-- Manage Students -->
+        <div class="col-lg-6 col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fas fa-user-graduate fa-2x text-info mb-3"></i>
+                    <h5 class="card-title">Quản lý học sinh</h5>
+                    <p class="card-text">Xem và quản lý tất cả học sinh</p>
+                    <a href="/admin/students" class="btn btn-outline-info">Đến trang quản lý học sinh</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Subjects -->
+        <div class="col-lg-6 col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <i class="fa fa-file-text fa-2x text-danger mb-3" aria-hidden="true" ></i></i>
+                    <h5 class="card-title">Quản lý bài tập</h5>
+                    <p class="card-text">Xem và quản lý tất cả bài tập</p>
+                    <a href="/test_managements/tests" class="btn btn-outline-danger">Đến trang quản lý bài tập</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

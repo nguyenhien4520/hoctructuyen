@@ -1,0 +1,47 @@
+
+        {{!-- {{#each tests}}
+        
+                
+                    {{#each this.questions as |question qIndex|}}
+                    
+                            <h5>{{this.text}}</h5> 
+                        
+                            {{#each this.options}}
+                                <input type="radio" name="{{qIndex}}" id="{{qIndex}}"> {{this.text}} <br>
+                            {{/each}}
+                        
+                    
+                    {{/each}}
+                
+            
+        {{/each}} --}}
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <h4 class="">{{test.title}}</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/test_managements/tests">Quay về QLBT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<form class="mt-4" action="/submit-test" method="POST">
+        {{#each test.questions as |question qIndex|}}
+        <div>
+            <h5>{{question.text}}</h5>
+            {{#each question.options as |option oIndex|}}
+            <label>
+                <input type="radio" name="answers[{{qIndex}}]" value="{{oIndex}}">
+                {{option.text}}
+            </label><br>
+            {{/each}}
+        </div>
+        {{/each}}
+    <button type="submit" class="btn btn-success mt-4">Submit</button>
+</form>
+

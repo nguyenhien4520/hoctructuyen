@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment Management</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <a class="navbar-brand" href="#">Test Panel</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/{{user_role}}">Quay về</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Quản Lý Bài Tập</h1>
+            <div>
+                {{!-- <button class="btn btn-primary mr-2" onclick="document.getElementById('fileInput').click()">
+                    <i class="fa fa-upload" aria-hidden="true"></i> Tải lên bài tập
+                </button>
+                <input type="file" id="fileInput" style="display: none;" /> --}}
+                <button class="btn btn-success">
+                    <a href="/test_managements/test/add" style="text-decoration: none;" class="text-light"><i
+                            class="fa fa-plus-square" aria-hidden="true"></i>
+                        Thêm bài tập mới</a>
+                </button>
+            </div>
+        </div>
+
+        <!-- Table -->
+        <table class="table table-striped table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tên bài tập</th>
+                    <th scope="col">Loại bài tập</th>
+                    <th scope="col">Số câu</th>
+                    <th scope="col">Lớp</th>
+                    <th scope="col">Môn</th>
+                    <th scope="col">Ngày tạo</th>
+                    <th scope="col" class="text-center">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tests}}
+                <tr>
+                    <th scope="row">{{sum @index 1}}</th>
+                    <td>{{this.title}}</td>
+                    <td>{{this.type}}</td>
+                    <td>{{this.numberQuestion}}</td>
+                    <td>{{this.grade}}</td>
+                    <td>{{this.subject}}</td>
+                    <td>{{formatDate this.createdAt 'dd/MM/yyyy HH:mm'}}</td>
+                    <td class="text-center">
+                        <a href="/test_managements/test/view/{{this._id}}" class="btn btn-info btn-sm text-light"><i
+                                class="fa fa-eye" aria-hidden="true"></i> Xem</a>
+                        {{!-- <button class="btn btn-warning btn-sm"><i class="fa fa-pencil-alt" aria-hidden="true"></i>
+                            Sửa</button> --}}
+                        <a class="btn btn-danger btn-sm" href="/test_managements/test/delete/{{this._id}}"><i
+                                class="fa fa-trash" aria-hidden="true"></i>
+                            Xóa</a>
+                        <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#inforModal"
+                            data-id="{{this._id}}"><i class="fa fa-plus" aria-hidden="true"></i> Thêm vào
+                            lớp</button>
+                    </td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script>
+       
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "beautiful": "prettier --single-quote --tab-width 4 --trailing-comma all --write 'src/**/*.{js,json,scss}'",
+    "start": "nodemon --inspect src/index.js",
+    "watch": "sass --embed-source-map --watch src/resources/scss/app.scss src/public/css/app.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "express-handlebars": "^7.1.2",
+    "html-docx-js": "^0.3.1",
+    "html-to-docx": "^1.8.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose-delete": "^1.0.2",
+    "mongoose-slug-updater": "^3.3.0",
+    "multer": "^1.4.5-lts.1",
+    "openai": "^4.55.7",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "remove-accents": "^0.5.0",
+    "sass": "^1.71.1",
+    "slugify": "^1.6.6",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "date-fns": "^3.3.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.2.0",
+    "mongoose-slug-generator": "^1.0.4",
+    "morgan": "^1.10.0",
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.1.0",
+    "prettier": "^3.2.5"
+  }
+}

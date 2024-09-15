@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Bài Tập Tiểu Học</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    {{>header}}
+    <section id="hero">
+        <div class="container">
+            <h2>Tạo bài tập thông minh cho học sinh trung học cơ sở</h2>
+            <p>Ứng dụng sử dụng AI để tạo ra các bài tập đa dạng, giúp giáo viên tiết kiệm thời gian và nâng cao hiệu
+                quả giảng dạy.</p>
+            <a href="#create-quiz" class="btn">Bắt đầu ngay</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <div class="container">
+            <h2>Tính năng nổi bật</h2>
+            <div class="feature-box">
+                <i class="fas fa-brain"></i>
+                <h3>AI thông minh</h3>
+                <p>Tự động tạo các bài tập dựa trên kiến thức và kỹ năng của học sinh.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-user-friends"></i>
+                <h3>Dễ dàng sử dụng</h3>
+                <p>Giao diện thân thiện với người dùng, phù hợp với mọi đối tượng.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-chart-line"></i>
+                <h3>Theo dõi tiến độ</h3>
+                <p>Giáo viên có thể theo dõi tiến độ học tập của học sinh theo thời gian thực.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-database"></i>
+                <h3>Ngân hàng câu hỏi</h3>
+                <p>Lưu trữ và quản lý câu hỏi để sử dụng lại khi cần thiết.</p>
+            </div>
+            <div class="feature-box">
+                <i class="fas fa-file-pdf"></i>
+                <h3>Xuất bài tập</h3>
+                <p>Xuất bài tập dưới dạng PDF hoặc chia sẻ link trực tuyến với học sinh.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="create-quiz">
+        <div class="container">
+            <h2>Tạo bài tập ngay</h2>
+            <form id="quiz-form">
+                <label for="topic">Tiêu đề:</label>
+                <input type="text" id="topic" name="topic" placeholder="Nhập chủ đề bài tập">
+                <label for="subject">Môn học:</label>
+                <select id="subject" name="subject">
+                    <option value="Toán">Toán</option>
+                    <option value="Văn">Ngữ văn</option>
+                    <option value="Lý">Vật lý</option>
+                    <option value="Hóa">Hóa học</option>
+                    <option value="Sinh">Sinh học</option>
+                    <option value="Sử">Lịch sử</option>
+                    <option value="Địa">Địa lý</option>
+                    <option value="Anh">Tiếng Anh</option>
+                    <option value="GDCD">Giáo dục công dân</option>
+                    <option value="Tin">Tin học</option>
+                    <option value="CN">Công nghệ</option>
+                </select>
+
+                <label for="quiz-type">Loại bài tập:</label>
+                <select id="quiz-type" name="quiz-type">
+                    <option value="Trắc nghiệm">Trắc nghiệm</option>
+                    <option value="Điền vào chỗ trống">Điền vào chỗ trống</option>
+                    <option value="Tự luân">Tự luận</option>
+                </select>
+
+                <label for="quiz-grade">Lớp:</label>
+                <select id="quiz-grade" name="quiz-grade">
+                    <option value="6">Lớp 6</option>
+                    <option value="7">Lớp 7</option>
+                    <option value="8">Lớp 8</option>
+                    <option value="9">Lớp 9</option>
+                </select>
+
+                <label for="question-count">Số câu hỏi:</label>
+                <input type="number" id="question-count" name="question-count" min="1" max="100" value="20">
+
+                <label for="difficulty">Độ khó:</label>
+                <select id="difficulty" name="difficulty">
+                    <option value="dễ">Dễ</option>
+                    <option value="trung bình">Trung bình</option>
+                    <option value="khó">Khó</option>
+                </select>
+
+                <label for="answer">Đáp án</label>
+                <select id="answer" name="answer">
+                    <option value="có đáp án,">Có đáp án</option>
+                    <option value="">Không có đáp án</option>
+                </select>
+
+                <label for="description">Mô tả bài tập:</label>
+                <textarea id="description" name="description" placeholder="Nhập mô tả cho bài tập"></textarea>
+
+                <button type="submit" class="btn">Tạo bài tập</button>
+            </form>
+        </div>
+    </section>
+    <section id="result-quiz">
+        <div class="container">
+            <h2>Kết quả</h2>
+            <div id="loading" class="spinner" style="display: none;"></div>
+            <div id="result" name="result">
+                <br>Kết quả sẽ hiển thị ở đây<br>
+            </div>
+        </div>
+        <br>
+        <form id="exportForm" action="/test_managements/test/download" method="post">
+            <input type="hidden" name="htmlContent" id="htmlContent">
+            <button type="submit" class="btn-download">Tải file</button>
+        </form>
+        <a href=""></a>
+    </section>
+
+    <section id="manage-quiz">
+        <div class="container">
+            <a href="/test_managements/tests" class="btn btn-success text-light" style="text-decoration: none;">Quản lý bài tập</a>
+            <div id="quiz-list">
+                <!-- Danh sách bài tập sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+    </section>
+
+    <section id="guide">
+        <div class="container">
+            <h2>Hướng dẫn sử dụng</h2>
+            <p>Chi tiết các bước để sử dụng ứng dụng ChatGPT trong việc tạo bài tập cho học sinh.</p>
+            <ol>
+                <li>Đăng nhập vào hệ thống</li>
+                <li>Chọn mục "Tạo bài tập" từ menu</li>
+                <li>Nhập thông tin bài tập và chọn mức độ khó</li>
+                <li>Lưu và phân phối bài tập đến học sinh</li>
+            </ol>
+        </div>
+    </section>
+    {{>footer}}
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('quiz-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            document.getElementById('loading').style.display = 'block';
+            const formData = new FormData(this);
+            const data = {
+                topic: formData.get('topic'),
+                subject: formData.get('subject'),
+                type: formData.get('quiz-type'),
+                numQuestions: formData.get('question-count'),
+                difficulty: formData.get('difficulty'),
+                grade: formData.get('quiz-grade'),
+                description: formData.get('description'),
+                answer: formData.get('answer'),
+            };
+
+            try {
+                const response = await fetch('/test_managements/test/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+                const result = await response.json();
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('result').innerText = `${result.result}`;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('loading').style.display = 'none';
+            }
+        });
+        document.getElementById('exportForm').addEventListener('submit', function (event) {
+            const resultContent = document.getElementById('result').innerHTML;
+            document.getElementById('htmlContent').value = resultContent;
+        });
+
+    </script>
+</body>
+
+</html>
