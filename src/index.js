@@ -1,8 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
-require('dotenv').config();
-const port = process.env.PORT || 3000;
+const port = 3000;
 const handlebars = require('express-handlebars');
 const path = require('path');
 const passport = require('./app/middlewares/passport');
@@ -12,7 +11,6 @@ const { format } = require('date-fns');
 const methodOverride = require('method-override');
 const CookieParser = require('cookie-parser');
 const sortMiddleware = require('./app/middlewares/sortMiddleWares');
-
 // Morgan
 // app.use(morgan('combined'));
 

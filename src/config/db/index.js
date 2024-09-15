@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
 // username: thefaceexample
 // password mongodb atlas: 2inZu8B8TkGpLY3v
+require('dotenv').config();
+const url = process.env.URL
 async function connection(){
     try {
-        await mongoose.connect('mongodb+srv://thefaceexample:2inZu8B8TkGpLY3v@cluster0.qorlu.mongodb.net/tao_bai_tap',{
+        await mongoose.connect(url,{
             
         });
         console.log('Connected to MongoDB');
