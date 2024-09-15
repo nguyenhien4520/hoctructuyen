@@ -31,9 +31,9 @@
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1>Quản Lý Học Sinh</h1>
             <div>
-                <button class="btn btn-primary me-2" onclick="document.getElementById('fileInput').click()">
+                {{!-- <button class="btn btn-primary me-2" onclick="document.getElementById('fileInput').click()">
                     <i class="fa fa-upload" aria-hidden="true"></i> Tải lên danh sách học sinh
-                </button>
+                </button> --}}
                 <input type="file" id="fileInput" style="display: none;" />
                 <button type="button" class="btn btn-success" id="addStudent" data-bs-toggle="modal"
                     data-bs-target="#inforModal">
@@ -262,7 +262,7 @@
             }
         });
 
-        document.getElementById('fileInput').addEventListener('change', async function () {
+       /* document.getElementById('fileInput').addEventListener('change', async function () {
             const fileInput = document.getElementById('fileInput');
             const file = fileInput.files[0];
 
@@ -288,7 +288,7 @@
                     console.error('Error:', error);
                 }
             }
-        });
+        });*/
 
     </script>
 

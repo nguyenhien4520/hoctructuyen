@@ -294,55 +294,55 @@ class AdminController {
         });
     }
 
-    async uploadStudents(req, res) {
-        try {
-            const file = req.file;
+    // async uploadStudents(req, res) {
+    //     try {
+    //         const file = req.file;
 
-            if (!file) {
-                return res.status(400).send('No file uploaded.');
-            }
+    //         if (!file) {
+    //             return res.status(400).send('No file uploaded.');
+    //         }
 
-            // Đọc file Excel
-            const workbook = XLSX.read(file.buffer, { type: 'buffer' });
-            const sheet_name_list = workbook.SheetNames;
-            const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-            // console.log('data =>>>>>>>>>>>>>', data);
-            function generateUsername(name, dob) {
-                // Loại bỏ dấu cách và chuyển tên về dạng chữ thường
-                const namePart = name.toLowerCase().replace(/ /g, '');
+    //         // Đọc file Excel
+    //         const workbook = XLSX.read(file.buffer, { type: 'buffer' });
+    //         const sheet_name_list = workbook.SheetNames;
+    //         const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+    //         // console.log('data =>>>>>>>>>>>>>', data);
+    //         function generateUsername(name, dob) {
+    //             // Loại bỏ dấu cách và chuyển tên về dạng chữ thường
+    //             const namePart = name.toLowerCase().replace(/ /g, '');
 
-                // Tách ngày, tháng, năm từ dob
-                const date = new Date(dob);
-                const day = String(date.getDate()).padStart(2, '0'); // Lấy ngày, đảm bảo có 2 chữ số
-                const month = String(date.getMonth() + 1).padStart(2, '0'); // Lấy tháng, đảm bảo có 2 chữ số
-                const year = date.getFullYear(); // Lấy năm
+    //             // Tách ngày, tháng, năm từ dob
+    //             const date = new Date(dob);
+    //             const day = String(date.getDate()).padStart(2, '0'); // Lấy ngày, đảm bảo có 2 chữ số
+    //             const month = String(date.getMonth() + 1).padStart(2, '0'); // Lấy tháng, đảm bảo có 2 chữ số
+    //             const year = date.getFullYear(); // Lấy năm
 
-                // Tạo username bằng cách kết hợp tên với ngày, tháng, năm
-                const username = `${namePart}${day}${month}${year}`;
+    //             // Tạo username bằng cách kết hợp tên với ngày, tháng, năm
+    //             const username = `${namePart}${day}${month}${year}`;
 
-                return username;
-            }
-            // Xử lý dữ liệu và lưu vào database
-            for (const row of data) {
-                const student = new User({
-                    name: row["Họ tên"],  // 'ten' là tên cột trong file Excel
-                    username: generateUsername(removeAccents(row["Họ tên"]).toLowerCase().replace(/ /g, ''), row["Ngày sinh"]), // Tạo tên tài khoản từ tên
-                    password: "123456",
-                    dateOfBirth: new Date(row["Ngày sinh"]), // 'ngay_sinh' là tên cột trong file Excel
-                    role: "student"
-                });
+    //             return username;
+    //         }
+    //         // Xử lý dữ liệu và lưu vào database
+    //         for (const row of data) {
+    //             const student = new User({
+    //                 name: row["Họ tên"],  // 'ten' là tên cột trong file Excel
+    //                 username: generateUsername(removeAccents(row["Họ tên"]).toLowerCase().replace(/ /g, ''), row["Ngày sinh"]), // Tạo tên tài khoản từ tên
+    //                 password: "123456",
+    //                 dateOfBirth: new Date(row["Ngày sinh"]), // 'ngay_sinh' là tên cột trong file Excel
+    //                 role: "student"
+    //             });
 
-                await student.save(); // Lưu vào database
-            }
+    //             await student.save(); // Lưu vào database
+    //         }
 
-            res.status(200).json({
-                message: "Students uploaded successfully"
-            })
-        } catch (err) {
-            console.error(err);
-            res.status(500).send('Error processing file.');
-        }
-    }
+    //         res.status(200).json({
+    //             message: "Students uploaded successfully"
+    //         })
+    //     } catch (err) {
+    //         console.error(err);
+    //         res.status(500).send('Error processing file.');
+    //     }
+    // }
 }
 
 module.exports = new AdminController();

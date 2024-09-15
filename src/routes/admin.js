@@ -33,7 +33,7 @@ router.delete('/teachers/:id', adminController.deleteTeacher);
 router.delete('/students/:id', adminController.deleteStudent);
 router.get('/students', adminController.students);
 router.post('/students/add', adminController.addStudent);
-router.post('/students/upload', upload.single('file'),adminController.uploadStudents);
+// router.post('/students/upload', upload.single('file'),adminController.uploadStudents);
 router.get('/students/:id', adminController.editStudent);
 router.put('/students/:id', adminController.updateStudent);
 //end student
