@@ -303,7 +303,7 @@ class AdminController {
             }
 
             // Đọc file Excel
-            const workbook = XLSX.readFile(file.path);
+            const workbook = XLSX.read(file.buffer, { type: 'buffer' });
             const sheet_name_list = workbook.SheetNames;
             const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
             // console.log('data =>>>>>>>>>>>>>', data);
