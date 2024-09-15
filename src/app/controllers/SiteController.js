@@ -12,18 +12,13 @@ require('dotenv').config();
 const openai = new OpenAI({
     apiKey: process.env.KEY
 });
-try {
     async function taoQuiz(question) {
         const completion = await openai.chat.completions.create({
             messages: [{ role: "system", content: question }],
             model: "gpt-4o-mini",
         });
-
         return completion.choices[0].message.content;
     }
-} catch (error) {
-    console.error('Error when initializing OpenAI:', error);
-}
 
 
 function parseQuestions(input) {
