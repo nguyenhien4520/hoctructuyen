@@ -12,14 +12,19 @@ require('dotenv').config();
 const openai = new OpenAI({
     apiKey: process.env.KEY
 });
-async function taoQuiz(question) {
-    const completion = await openai.chat.completions.create({
-        messages: [{ role: "system", content: question }],
-        model: "gpt-4o-mini",
-    });
+try {
+    async function taoQuiz(question) {
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: "system", content: question }],
+            model: "gpt-4o-mini",
+        });
 
-    return completion.choices[0].message.content;
+        return completion.choices[0].message.content;
+    }
+} catch (error) {
+    console.error('Error when initializing OpenAI:', error);
 }
+
 
 function parseQuestions(input) {
     try {
@@ -186,11 +191,11 @@ ${da}`;
                 res.redirect('/student')
             }
         } catch (error) {
-            res.status(500).json({ error: error})
+            res.status(500).json({ error: error })
         }
     }
 
-    async logout(req, res, next){
+    async logout(req, res, next) {
         res.clearCookie('jwt');
         res.redirect('/');
     }
