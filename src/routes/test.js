@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../app/controllers/AdminController');
 const siteController = require('../app/controllers/SiteController');
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+// const multer = require('multer');
+// const upload = multer({ dest: 'uploads/' });
 
 //  begin test
 router.get('/tests', adminController.tests);
